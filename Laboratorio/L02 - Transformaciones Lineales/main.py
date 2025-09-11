@@ -24,7 +24,6 @@ def proyectarPts(T, wz):
 
     ############### Insert code here!! ######################3
     return xy
-
           
 def vistform(T, wz, titulo=''):
     # transformar los puntos de entrada usando T
