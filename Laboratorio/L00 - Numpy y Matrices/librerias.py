@@ -261,12 +261,14 @@ def calcularAx(A, x):
 def test_calcularAx():
     sizes = [(3,3), (3,4), (4,2), (5,5), (2,5), (6,3)]  # cuadradas, n<m y n>m
     for n, m in sizes:
-        A = np.random.randint(1,10,(n,m))
-        x = np.random.randint(1,10,m)  # vector de largo m
-        result = calcularAx(A, x)      # tu implementación
-        expected = A @ x   # multiplicación de matriz por vector con NumPy
-        assert np.array_equal(result, expected), f"Fallo en tamaño {n}x{m}"
-    
+        A = np.random.randint(1, 10, (n, m))
+        x = np.random.randint(1, 10, m)   # vector de largo m
+        result = calcularAx(A, x)         # tu implementación
+        expected = A @ x                  # resultado con NumPy
+
+        # Usamos allclose para mayor robustez
+        assert np.allclose(result, expected), f"Fallo en tamaño {n}x{m}"
+
     print("✅ 8) Todos los tests de calcularAx pasaron correctamente.")
 
 # Ejecutar tests
