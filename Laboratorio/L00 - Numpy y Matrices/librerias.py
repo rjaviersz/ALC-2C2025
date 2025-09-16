@@ -182,7 +182,7 @@ test_traza()
 # traspuesta de A.
 # =============================================================================
  
-def traspuesta(A): # implementacion menos costosa y mas eficiente
+def traspuesta(A): 
     n, m = A.shape
     At = np.zeros((m, n))  # matriz de retorno donde ire cambiando valores
     for columna in range(m):
@@ -193,7 +193,7 @@ def traspuesta(A): # implementacion menos costosa y mas eficiente
     #     for columna in range(m):
     #         At[columna, fila] = A[fila, columna]
 
-def traspuesta1(A):  # primera implementacion pero que consume mucha memoria
+def traspuesta1(A): 
     At = []
     n, m = A.shape
     for columna in range(m):
@@ -261,14 +261,12 @@ def calcularAx(A, x):
 def test_calcularAx():
     sizes = [(3,3), (3,4), (4,2), (5,5), (2,5), (6,3)]  # cuadradas, n<m y n>m
     for n, m in sizes:
-        A = np.random.randint(1, 10, (n, m))
-        x = np.random.randint(1, 10, m)   # vector de largo m
-        result = calcularAx(A, x)         # tu implementación
-        expected = A @ x                  # resultado con NumPy
-
-        # Usamos allclose para mayor robustez
-        assert np.allclose(result, expected), f"Fallo en tamaño {n}x{m}"
-
+        A = np.random.randint(1,10,(n,m))
+        x = np.random.randint(1,10,m)  # vector de largo m
+        result = calcularAx(A, x)      # tu implementación
+        expected = A @ x   # multiplicación de matriz por vector con NumPy
+        assert np.array_equal(result, expected), f"Fallo en tamaño {n}x{m}"
+    
     print("✅ 8) Todos los tests de calcularAx pasaron correctamente.")
 
 # Ejecutar tests
